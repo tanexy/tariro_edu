@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": "user-clive-tariro",
+      "email": "tanakaclive29@gmail.com",
+      "name": "Clive Tanaka",
+      "tier": "FREE",
+      "storageUsed": 0,
+      "storageLimit": 104857600,
+      "createdAt": "2026-06-07T17:20:31.209Z"
+    }
+  ],
+  "workspaces": [],
+  "learningSpaces": [],
+  "documents": [],
+  "learningResources": [],
+  "tutorChats": [],
+  "recentActivities": []
+}

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Sleek Interface Color Palette */
+  --color-cosmic-bg: #0a0a0b;
+  --color-cosmic-card: #111112;
+  --color-cosmic-card-hover: #171719;
+  --color-cosmic-border: rgba(30, 41, 59, 0.6);
+  --color-cosmic-accent: #6366f1;
+  --color-cosmic-accent-glow: rgba(99, 102, 241, 0.25);
+}
+
+body {
+  background-color: var(--color-cosmic-bg);
+  color: #f3f4f6;
+  font-family: var(--font-sans);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cosmic-accent);
+}
+
+/* Smooth active recall flashcard transitions */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.transform-transform {
+  transform-style: preserve-3d;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}

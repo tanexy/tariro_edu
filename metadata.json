@@ -1,0 +1,6 @@
+{
+  "name": "Tariro",
+  "description": "An AI-powered knowledge transformation platform that converts documents and folders into structured, interactive learning experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
