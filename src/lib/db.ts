@@ -18,7 +18,7 @@ import {
   QuizQuestion,
   MindMapData,
   TutorMessage
-} from "./types";
+} from "../types/index";
 
 interface DbSchema {
   users: UserProfile[];

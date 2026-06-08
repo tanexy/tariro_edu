@@ -6,7 +6,44 @@
   --font-display: "Space Grotesk", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Sleek Interface Color Palette */
+  /* Premium SaaS Color Palette */
+  --color-background: #09090b;
+  --color-foreground: #fafafa;
+
+  --color-card: #09090b;
+  --color-card-foreground: #fafafa;
+
+  --color-popover: #09090b;
+  --color-popover-foreground: #fafafa;
+
+  --color-primary: #ffffff;
+  --color-primary-foreground: #09090b;
+
+  --color-secondary: #27272a;
+  --color-secondary-foreground: #fafafa;
+
+  --color-muted: #27272a;
+  --color-muted-foreground: #a1a1aa;
+
+  --color-accent: #27272a;
+  --color-accent-foreground: #fafafa;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fafafa;
+
+  --color-border: #27272a;
+  --color-input: #27272a;
+  --color-ring: #d4d4d8;
+
+  /* Tariro Specific */
+  --color-tariro-blue: #3b82f6;
+  --color-tariro-purple: #8b5cf6;
+  --color-tariro-indigo: #6366f1;
+
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+
   --color-cosmic-bg: #0a0a0b;
   --color-cosmic-card: #111112;
   --color-cosmic-card-hover: #171719;
@@ -15,10 +52,14 @@
   --color-cosmic-accent-glow: rgba(99, 102, 241, 0.25);
 }
 
-body {
-  background-color: var(--color-cosmic-bg);
-  color: #f3f4f6;
-  font-family: var(--font-sans);
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
 }
 
 /* Custom scrollbars */
@@ -34,7 +75,7 @@ body {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-cosmic-accent);
+  background: var(--color-tariro-indigo);
 }
 
 /* Smooth active recall flashcard transitions */
@@ -49,4 +90,33 @@ body {
 }
 .rotate-y-180 {
   transform: rotateY(180deg);
+}
+
+/* Typography styles */
+.text-display {
+  @apply font-display text-4xl font-bold tracking-tight;
+}
+
+.text-h1 {
+  @apply font-display text-3xl font-bold tracking-tight;
+}
+
+.text-h2 {
+  @apply font-display text-2xl font-semibold tracking-tight;
+}
+
+.text-h3 {
+  @apply font-display text-xl font-semibold tracking-tight;
+}
+
+.text-body {
+  @apply font-sans text-base leading-relaxed;
+}
+
+.text-caption {
+  @apply font-sans text-sm text-muted-foreground;
+}
+
+.text-label {
+  @apply font-mono text-xs font-medium uppercase tracking-wider;
 }
