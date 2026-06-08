@@ -49,7 +49,7 @@ export default function DashboardOverview({
   };
 
   return (
-    <div className="p-8 space-y-8 max-w-7xl mx-auto">
+    <div className="p-8 space-y-8 max-w-7xl mx-auto pb-20">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
@@ -175,7 +175,7 @@ export default function DashboardOverview({
               {activities.length === 0 ? (
                 <p className="text-caption italic">No recent activity.</p>
               ) : (
-                activities.slice(0, 5).map((act) => (
+                activities.map((act) => (
                   <div key={act.id} className="flex gap-3 group">
                     <div className="h-8 w-8 rounded-lg bg-secondary flex items-center justify-center shrink-0 border border-border group-hover:border-primary/30 transition-colors">
                       <ActivityIcon type={act.type} />

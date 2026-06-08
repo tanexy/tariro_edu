@@ -40,7 +40,7 @@ export default function VisualMapView({
   const topics = mindMap.nodes.filter(n => n.type === 'topic');
 
   return (
-    <div className="p-8 space-y-10 max-w-7xl mx-auto h-full flex flex-col pb-20">
+    <div className="p-8 space-y-10 max-w-7xl mx-auto min-h-full flex flex-col pb-20">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 shrink-0">
         <div className="space-y-1">

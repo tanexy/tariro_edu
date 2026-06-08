@@ -313,7 +313,7 @@ export default function App() {
       />
 
       {/* Main Content Arena with fluid tab fades */}
-      <main className="flex-1 overflow-hidden flex flex-col h-screen relative bg-background" id="main-scroll-pane">
+      <main className="flex-1 overflow-y-auto overflow-x-hidden flex flex-col h-screen relative bg-background" id="main-scroll-pane">
         <TopBar />
         <AnimatePresence mode="wait">
           <motion.div
@@ -322,7 +322,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -3 }}
             transition={{ duration: 0.15 }}
-            className="flex-1 h-full overflow-hidden"
+            className="flex-1 min-h-0"
           >
             {activeView === "dashboard" && (
               <DashboardOverview
