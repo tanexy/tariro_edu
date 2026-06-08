@@ -81,7 +81,7 @@ export default function Sidebar({
   const storagePercentage = (user.storageUsed / user.storageLimit) * 100;
 
   return (
-    <aside className="flex flex-col w-64 bg-background border-r border-border h-screen shrink-0 group transition-all duration-300">
+    <aside className="hidden lg:flex flex-col w-64 bg-background border-r border-border h-screen shrink-0 group transition-all duration-300">
       {/* Brand & Workspace Selector */}
       <div className="p-4 space-y-4">
         <div className="flex items-center gap-2 px-2">

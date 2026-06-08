@@ -142,7 +142,7 @@ export default function AssessmentView({
   const progress = ((currentIndex) / quizzes.length) * 100;
 
   return (
-    <div className="p-8 h-full flex flex-col max-w-4xl mx-auto space-y-8">
+    <div className="p-8 min-h-full flex flex-col max-w-4xl mx-auto space-y-8 pb-20">
       {/* View Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>

@@ -42,6 +42,16 @@ export default function TutorView({
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Disable main scroll when in tutor view to keep chat stable
+    const mainPane = document.getElementById("main-scroll-pane");
+    if (mainPane) mainPane.style.overflow = "hidden";
+
+    return () => {
+      if (mainPane) mainPane.style.overflow = "auto";
+    };
+  }, []);
+
+  useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
