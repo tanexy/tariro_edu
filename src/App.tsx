@@ -7,16 +7,17 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Loader2, Plus, BrainCircuit, Activity, Layers, FolderIcon, Sparkles } from "lucide-react";
 
-import Sidebar from "./components/Sidebar";
-import UploadModal from "./components/UploadModal";
-import DashboardOverview from "./components/DashboardOverview";
-import SpaceOverview from "./components/SpaceOverview";
-import TutorView from "./components/TutorView";
-import FlashcardView from "./components/FlashcardView";
-import AssessmentView from "./components/AssessmentView";
-import VisualMapView from "./components/VisualMapView";
-import BillingSettings from "./components/BillingSettings";
-import ExamIntelView from "./components/ExamIntelView";
+import Sidebar from "./components/layout/Sidebar";
+import TopBar from "./components/layout/TopBar";
+import UploadModal from "./features/upload/UploadModal";
+import DashboardOverview from "./features/dashboard/DashboardOverview";
+import SpaceOverview from "./features/learning-spaces/SpaceOverview";
+import TutorView from "./features/tutor/TutorView";
+import FlashcardView from "./features/flashcards/FlashcardView";
+import AssessmentView from "./features/assessments/AssessmentView";
+import VisualMapView from "./features/learning-spaces/VisualMapView";
+import BillingSettings from "./features/billing/BillingSettings";
+import ExamIntelView from "./features/exam-intel/ExamIntelView";
 
 import { 
   UserProfile, 
@@ -28,7 +29,7 @@ import {
   RecentActivity, 
   UserTier, 
   DashboardStats 
-} from "./types";
+} from "./types/index";
 
 export default function App() {
   const [user, setUser] = useState<UserProfile | null>(null);
@@ -280,12 +281,12 @@ export default function App() {
 
   if (!isPageReady || !user) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-cosmic-bg text-gray-400 font-sans" id="loading-fallback">
+      <div className="flex flex-col items-center justify-center h-screen bg-background text-muted-foreground font-sans" id="loading-fallback">
         <div className="relative flex items-center justify-center mb-4">
-          <div className="w-14 h-14 rounded-full border-4 border-slate-800 border-t-cosmic-accent animate-spin" />
-          <BrainCircuit className="w-5 h-5 text-cosmic-accent absolute animate-pulse" />
+          <div className="w-14 h-14 rounded-full border-2 border-primary/20 border-t-primary animate-spin" />
+          <BrainCircuit className="w-6 h-6 text-primary absolute animate-pulse" />
         </div>
-        <p className="text-xs font-mono tracking-wider animate-pulse">BOOTING TARIRO INTERFACE ENGINE...</p>
+        <p className="text-[10px] font-mono tracking-[0.2em] animate-pulse uppercase">Initializing Tariro Core...</p>
       </div>
     );
   }
@@ -294,7 +295,7 @@ export default function App() {
   const selectedSpace = learningSpaces.find(s => s.id === activeSpaceId);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-cosmic-bg font-sans select-none" id="tariro-app-root">
+    <div className="flex h-screen overflow-hidden bg-background font-sans select-none" id="tariro-app-root">
       
       {/* Sidebar Controller */}
       <Sidebar
@@ -312,8 +313,8 @@ export default function App() {
       />
 
       {/* Main Content Arena with fluid tab fades */}
-      <main className="flex-1 overflow-hidden flex flex-col h-screen relative bg-cosmic-bg text-gray-100" id="main-scroll-pane">
-        
+      <main className="flex-1 overflow-hidden flex flex-col h-screen relative bg-background" id="main-scroll-pane">
+        <TopBar />
         <AnimatePresence mode="wait">
           <motion.div
             key={activeView + "_" + activeSpaceId}

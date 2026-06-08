@@ -10,8 +10,8 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 // @ts-ignore
 import officeParser from "officeparser";
-import { dbManager } from "./src/db";
-import { UserTier, TutorMessage, QuizQuestion, Flashcard } from "./src/types";
+import { dbManager } from "./src/lib/db";
+import { UserTier, TutorMessage, QuizQuestion, Flashcard } from "./src/types/index";
 
 // Load environment variables
 dotenv.config();
@@ -214,7 +214,10 @@ app.post("/api/learning-spaces/upload-folder", async (req, res) => {
   res.json({ status: "processing", message: "Folder accepted. Extracting and analyzing...", learningSpaceId: space.id });
 
   // RUN Background Document Processing to prevent API timeout on long folders!
-  (async () => {
+  processDocumentsInBackground(space, files, workspaceId);
+});
+
+async function processDocumentsInBackground(space: any, files: any[], workspaceId: string) {
     try {
       const isApiKeyAvailable = verifyApiKeyPresent();
       const documentRecords = [];
@@ -616,8 +619,7 @@ Return EXACT JSON adhering to this schema:
       console.error("Critical failure during document extraction pipeline:", procErr);
       dbManager.addActivity(DEFAULT_USER_ID, "upload", "Processing Failed", `Error processing space: ${space.name}`);
     }
-  })();
-});
+}
 
 // Semantic chunk builder for robust high-scale processing
 function buildChunksFromDocuments(docs: any[]): string[] {
